@@ -13,6 +13,7 @@ import useSegmentAnalytics from "./hooks/useSegmentAnalytics";
 import { segmentUA, providerChecker } from "./helpers/userAnalyticHelpers";
 import { storeQueryParameters } from "./helpers/QueryParameterHelper";
 import { shouldTriggerSafetyCheck } from "./helpers";
+import Messages from "./components/Messages/Messages";
 
 import { calcBondDetails } from "./slices/BondSlice";
 import { loadAppDetails } from "./slices/AppSlice";
@@ -52,6 +53,7 @@ function App() {
   return (
     <ThemeProvider theme={lightTheme}>
       <CssBaseline />
+      <Messages />
       <Switch>
         <Route path="/ref">
           <ConnectMenu />

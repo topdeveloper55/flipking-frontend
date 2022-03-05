@@ -11,11 +11,11 @@ const store = configureStore({
   reducer: {
     //   we'll have state.account, state.bonding, etc, each handled by the corresponding
     // reducer imported from the slice file
-    // account: accountReducer,
-    // bonding: bondingReducer,
-    // app: appReducer,
-    // pendingTransactions: pendingTransactionsReducer,
-    // messages: messagesReducer,
+    account: accountReducer,
+    bonding: bondingReducer,
+    app: appReducer,
+    pendingTransactions: pendingTransactionsReducer,
+    messages: messagesReducer,
   },
   middleware: getDefaultMiddleware => getDefaultMiddleware({ serializableCheck: false }),
 });

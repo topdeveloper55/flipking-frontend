@@ -36,7 +36,7 @@ const messagesSlice = createSlice({
   reducers: {
     // Creates an error message
     error(state, action: PayloadAction<string>) {
-      createMessage(state, "error", "Error", action.payload);
+      createMessage(state, "error", "Oh...", action.payload);
     },
     // Creates an information message
     info(state, action: PayloadAction<string>) {
@@ -44,7 +44,8 @@ const messagesSlice = createSlice({
     },
     // Creates an information message
     success(state, action: PayloadAction<string>) {
-      createMessage(state, "success", "Success", action.payload);
+      console.log("action:", action.payload);
+      createMessage(state, "success", "Success!!!", action.payload);
     },
     // Closes a message
     close(state, action: PayloadAction<Message>) {

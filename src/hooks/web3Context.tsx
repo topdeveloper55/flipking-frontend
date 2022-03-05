@@ -93,8 +93,11 @@ export const Web3ContextProvider: React.FC<{ children: ReactElement }> = ({ chil
           options: {
             rpc: {
               56: "https://bsc-dataseed.binance.org/",
-              1337: "http://localhost:8545",
-              97: "https://data-seed-prebsc-1-s1.binance.org:8545/"
+              43114: "https://api.avax.network/ext/bc/C/rpc",
+              250: "https://rpc.ftm.tools",
+              97: "https://data-seed-prebsc-1-s1.binance.org:8545/",
+              43113: "https://api.avax-test.network/ext/bc/C/rpc",
+              4002: "https://rpc.testnet.fantom.network/"
             },
           },
         },
@@ -146,15 +149,32 @@ export const Web3ContextProvider: React.FC<{ children: ReactElement }> = ({ chil
         setUri("https://bsc-dataseed.binance.org/");
         return true;
       }
-      else if (otherChainID === 1337) {
+      else if (otherChainID === 43114) {
         console.log("chainId: ", otherChainID);
         setChainID(otherChainID);
-        setUri("http://localhost:8545");
+        setUri("https://api.avax.network/ext/bc/C/rpc");
+        return true;
+      }
+      else if (otherChainID === 250) {
+        console.log("chainId: ", otherChainID);
+        setChainID(otherChainID);
+        setUri("https://rpc.ftm.tools");
+        return true;
+      }
+      else if (otherChainID === 43113) {
+        console.log("chainId: ", otherChainID);
+        setChainID(otherChainID);
+        setUri("https://api.avax-test.network/ext/bc/C/rpc");
         return true;
       }
       else if (otherChainID === 97) {
         setChainID(otherChainID);
         setUri("https://data-seed-prebsc-1-s1.binance.org:8545/");
+        return true;
+      }
+      else if (otherChainID === 4002) {
+        setChainID(otherChainID);
+        setUri("https://rpc.testnet.fantom.network/");
         return true;
       }
       return false;
@@ -180,10 +200,8 @@ export const Web3ContextProvider: React.FC<{ children: ReactElement }> = ({ chil
     const connectedAddress = await connectedProvider.getSigner().getAddress();
     const validNetwork = _checkNetwork(chainId);
     if (!validNetwork) {
-      window.alert("Wrong network, please switch to Binance")
       console.error("Wrong network, please switch to Binance");
-      store.dispatch(error("Wrong network, please switch to Binance"));
-      error("Please connect your wallet!");
+      store.dispatch(error("Wrong network, please switch to Binance, Avalanche or Fantom"));
       return;
     }
     // Save everything after we've validated the right network.

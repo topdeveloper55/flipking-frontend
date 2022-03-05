@@ -1,7 +1,7 @@
 .background-image {
   background-image: url(background.png);
   background-size: cover ;
-  background-color: #06213ccf;
+  background-color: #06213c;
   padding: 30px 10px;
 }
 .header-bar {
@@ -35,10 +35,17 @@
   text-align: center;
 }
 .display-button {
-  background-color: #06213C !important;
+  background-color: #0a1825 !important;
   color: white !important;
   padding: 10px 20px !important;
   border-radius: 5px !important;
+}
+.pool-button {
+  background-color: #e71212 !important;
+  color: white !important;
+  padding: 10px 20px !important;
+  border-radius: 5px !important;
+  margin-right: 10px !important;
 }
 .disable-button {
   color: white !important;
@@ -61,4 +68,15 @@
   border-radius: 15px !important;
   background-color: #e2e1e1 !important;
   border: 1px solid grey;
+}
+.loading {
+  display: flex;
+  background-color: rgba(0,0,0,0.5);
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  width: 100%;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
 }

@@ -451,36 +451,45 @@ function ConnectMenu() {
   useEffect(() => {
     // set timeinterval 1
     app1();
+    if (timeInterval1) {
+      clearInterval(timeInterval1);
+      timeInterval1 = setInterval(() => {
+        app1();
+      }, 8000);
+    } else
+      timeInterval1 = setInterval(() => {
+        app1();
+      }, 8000);
     // set timeinterval 2
     if (timeInterval2) {
       clearInterval(timeInterval2);
       timeInterval2 = setInterval(() => {
         app2();
-      }, 3000);
+      }, 5000);
     } else
       timeInterval2 = setInterval(() => {
         app2();
-      }, 3000);
+      }, 5000);
     // set timeinterval 3
     if (timeInterval3) {
       clearInterval(timeInterval3);
       timeInterval3 = setInterval(() => {
         app3();
-      }, 3000);
+      }, 5000);
     } else
       timeInterval3 = setInterval(() => {
         app3();
-      }, 3000);
+      }, 5000);
     // set timeinterval 4
     if (timeInterval4) {
       clearInterval(timeInterval4);
       timeInterval4 = setInterval(() => {
         app4();
-      }, 3000);
+      }, 5000);
     } else
       timeInterval4 = setInterval(() => {
         app4();
-      }, 3000);
+      }, 5000);
   }, [connected, address]);
 
   useEffect(() => {
@@ -650,7 +659,11 @@ function ConnectMenu() {
                   Approve
                 </Button>
               )}
-              <Button className="display-button" onClick={handleFlip}>
+              <Button
+                className={startBtn ? "disable-button" : "display-button"}
+                disabled={startBtn}
+                onClick={handleFlip}
+              >
                 {flipBtnTxt()}
               </Button>
             </Box>
@@ -666,15 +679,21 @@ function ConnectMenu() {
           <Box display="flex" textAlign="center" justifyContent="space-around" style={{ marginBottom: "30px" }}>
             <Box style={{ marginBottom: "10px" }}>
               <img src={bscIcon} alt="BNB" style={{ height: "50px" }} />
-              <Typography variant="h5" style={{color: "white"}}>Binance</Typography>
+              <Typography variant="h5" style={{ color: "white" }}>
+                Binance
+              </Typography>
             </Box>
             <Box style={{ marginBottom: "10px" }}>
               <img src={avaxIcon} alt="BNB" style={{ height: "50px" }} />
-              <Typography variant="h5" style={{color: "white"}}>Avalanche</Typography>
+              <Typography variant="h5" style={{ color: "white" }}>
+                Avalanche
+              </Typography>
             </Box>
             <Box style={{ marginBottom: "10px" }}>
               <img src={ftmIcon} alt="BNB" style={{ height: "50px" }} />
-              <Typography variant="h5" style={{color: "white"}}>Fantom</Typography>
+              <Typography variant="h5" style={{ color: "white" }}>
+                Fantom
+              </Typography>
             </Box>
           </Box>
           <Box textAlign="center" style={{ color: "#F0C725" }}>

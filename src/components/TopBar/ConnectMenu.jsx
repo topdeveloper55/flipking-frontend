@@ -29,6 +29,9 @@ import store from "src/store";
 import "./style.css";
 import Check from "./check.png";
 import Logo from "./logo.png";
+import bscIcon from "./bsc.png";
+import avaxIcon from "./avax.png";
+import ftmIcon from "./ftm.png";
 
 const StyledTableCell = withStyles(theme => ({
   head: {
@@ -183,14 +186,14 @@ function ConnectMenu() {
     }
   };
 
-  const tokenName = (token) => {
-    if(token == 0) return "BNB";
-    else if(token == 1) return "BUSD";
-    else if(token == 2) return "AVAX";
-    else if(token == 3) return "USDC.e";
-    else if(token == 4) return "FTM";
+  const tokenName = token => {
+    if (token == 0) return "BNB";
+    else if (token == 1) return "BUSD";
+    else if (token == 2) return "AVAX";
+    else if (token == 3) return "USDC.e";
+    else if (token == 4) return "FTM";
     else return "USDC";
-  }
+  };
 
   const handleChangeToken = event => {
     setToken(event.target.value);
@@ -439,10 +442,10 @@ function ConnectMenu() {
   }, [web3, connected]);
 
   useEffect(() => {
-    if(chainID == bnbID) setToken(0);
-    else if(chainID == avaxID) setToken(2);
-    else if(chainID == ftmID) setToken(4);
-  }, [chainID])
+    if (chainID == bnbID) setToken(0);
+    else if (chainID == avaxID) setToken(2);
+    else if (chainID == ftmID) setToken(4);
+  }, [chainID]);
 
   useEffect(() => {
     // set timeinterval 1
@@ -664,10 +667,29 @@ function ConnectMenu() {
         <Grid item sm={12} md={6}>
           <Box textAlign="center" style={{ color: "#F0C725" }}>
             <Typography variant="h2" style={{ marginBottom: "20px" }}>
+              Support Chains
+            </Typography>
+          </Box>
+          <Box display="flex" textAlign="center" justifyContent="space-around" style={{ marginBottom: "30px" }}>
+            <Box style={{ marginBottom: "10px" }}>
+              <img src={bscIcon} alt="BNB" style={{ height: "50px" }} />
+              <Typography variant="h5" style={{color: "white"}}>Binance</Typography>
+            </Box>
+            <Box style={{ marginBottom: "10px" }}>
+              <img src={avaxIcon} alt="BNB" style={{ height: "50px" }} />
+              <Typography variant="h5" style={{color: "white"}}>Avalanche</Typography>
+            </Box>
+            <Box style={{ marginBottom: "10px" }}>
+              <img src={ftmIcon} alt="BNB" style={{ height: "50px" }} />
+              <Typography variant="h5" style={{color: "white"}}>Fantom</Typography>
+            </Box>
+          </Box>
+          <Box textAlign="center" style={{ color: "#F0C725" }}>
+            <Typography variant="h2" style={{ marginBottom: "20px" }}>
               Global Status
             </Typography>
           </Box>
-          <Box display="flex" justifyContent="center">
+          <Box display="flex" justifyContent="space-around">
             <Box className="card-box" textAlign="center">
               <Typography variant="h3">{totalLost + totalWon}</Typography>
               <Typography variant="h6">Total Flips</Typography>

@@ -307,6 +307,7 @@ function ConnectMenu() {
         if (data) store.dispatch(success(`Congratulations! You won ${3 * Number(amount)} ${tokenName(token)}`));
         else store.dispatch(error(`Sorry, you lost!`));
         setLoading(false);
+        await app1();
       }
     } catch (e) {
       console.error(e);
@@ -449,15 +450,7 @@ function ConnectMenu() {
 
   useEffect(() => {
     // set timeinterval 1
-    if (timeInterval1) {
-      clearInterval(timeInterval1);
-      timeInterval1 = setInterval(() => {
-        app1();
-      }, 3000);
-    } else
-      timeInterval1 = setInterval(() => {
-        app1();
-      }, 3000);
+    app1();
     // set timeinterval 2
     if (timeInterval2) {
       clearInterval(timeInterval2);
